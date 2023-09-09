@@ -32,7 +32,7 @@
 
 (use-package flyspell-correct
   :general
-  ("C-/" 'flyspell-correct-wrapper))
+  ("C-_" 'flyspell-correct-wrapper))
 
 (provide 'siren-flyspell)
 ;;; siren-flyspell.el ends here

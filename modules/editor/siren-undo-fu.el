@@ -10,7 +10,7 @@
   :demand
   :general
   ("M--" 'undo-fu-only-undo)
-  ("C-/" 'undo-fu-only-redo)
+  ("C-/" 'undo-fu-only-undo)
   ("s-z" 'undo-fu-only-undo)
   ("C-S-z" 'undo-fu-only-redo)
 
