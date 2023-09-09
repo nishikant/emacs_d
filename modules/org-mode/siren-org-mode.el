@@ -10,6 +10,7 @@
 (require 'siren-display-indentation)
 (require 'siren-display-line-numbers)
 (require 'siren-smart-shift)
+(require 'siren-org-roam)
 
 (use-package org
   :ensure nil
@@ -24,7 +25,13 @@
             "C-M-n" 'outline-next-visible-heading
             "C-M-p" 'outline-previous-visible-heading
             "C-c [" 'smart-shift-left
-            "C-c ]" 'smart-shift-right)
+            "C-c ]" 'smart-shift-right
+            "C-c n l" 'org-roam-buffer-toggle
+            "C-c n f" 'org-roam-node-find
+            "C-c n g" 'org-roam-graph
+            "C-c n i" 'org-roam-node-insert
+            "C-c n c" 'org-roam-capture
+            "C-c n j" 'org-roam-dailies-capture-today)
   (:keymaps 'org-src-mode-map
             "C-c C-c" 'org-edit-src-exit)
 
@@ -48,8 +55,8 @@
   (org-src-tab-acts-natively t)
   (org-src-window-setup 'current-window)
 
-  (org-directory (if (file-directory-p "~/Dropbox/org")
-                     "~/Dropbox/org" "~/org"))
+  (org-directory (if (file-directory-p "~/Documents/org")
+                     "~/Documents/org" "~/org"))
 
   (org-babel-load-languages
    '((awk . t)
@@ -94,7 +101,25 @@
   :config
   (require 'org-mouse)
   (setq org-id-locations-file
-        (expand-file-name ".org-id-locations" org-directory)))
+        (expand-file-name ".org-id-locations" org-directory))
+  (setq org-log-done 'time))
+
+;; Better Looking Bullets
+(use-package org-modern
+  :hook ((org-mode                 . org-modern-mode)
+         (org-agenda-finalize-hook . org-modern-agenda))
+  :custom ((org-modern-todo t)
+           (org-modern-table nil)
+           (org-modern-variable-pitch nil)
+           (org-modern-block-fringe nil))
+  :commands (org-modern-mode org-modern-agenda)
+  :init (global-org-modern-mode))
+
+;; Org Presentations using org-tree-slide
+
+(use-package org-tree-slide
+  :custom
+  (org-image-actual-width nil))
 
 (provide 'siren-org-mode)
 ;;; siren-org-mode.el ends here

@@ -38,7 +38,7 @@
   :general
   (:keymaps 'go-mode-map
             "RET" 'newline-and-indent
-            "C-h f" 'godoc-at-point)
+            "H-h f" 'godoc-at-point)
 
   :hook
   (go-mode . siren-go-mode-setup)

@@ -69,7 +69,9 @@ If FRAME is nil, it defaults to the currently selected frame."
 
 ;; modifier keys
 ;; (setq mac-command-modifier 'super)
+(setq mac-command-modifier 'meta)
 ;; (setq mac-option-modifier 'meta)
+(setq mac-option-modifier 'super)
 ;; (setq ns-alternate-modifier 'meta)
 ;; (setq ns-command-modifier 'super)
 (setq ns-function-modifier 'hyper)

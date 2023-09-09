@@ -10,9 +10,9 @@
   :demand
   :general
   ("M--" 'undo-fu-only-undo)
-  ("M-_" 'undo-fu-only-redo)
+  ("C-/" 'undo-fu-only-redo)
   ("s-z" 'undo-fu-only-undo)
-  ("s-Z" 'undo-fu-only-redo)
+  ("C-S-z" 'undo-fu-only-redo)
 
   :custom
   (undo-fu-allow-undo-in-region nil)

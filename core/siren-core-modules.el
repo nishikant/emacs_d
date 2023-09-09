@@ -172,6 +172,7 @@
 (require 'siren-ob-http)
 (require 'siren-ob-mermaid)
 (require 'siren-org-mode)
+(require 'siren-org-roam)
 (require 'siren-ox-gfm)
 (require 'siren-ox-pandoc)
 
@@ -241,6 +242,7 @@
 (require 'siren-x509)
 (require 'siren-xml)
 (require 'siren-yaml)
+(require 'siren-pdf)
 
 (provide 'siren-core-modules)
 ;;; siren-core-modules.el ends here
