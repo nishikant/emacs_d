@@ -14,6 +14,7 @@
 
 ;; Always load newest byte code
 (setq load-prefer-newer t)
+(setq initial-buffer-choice "~/Documents/org-roam/work.org")
 (load (expand-file-name "core/siren-core-init.el"
                         (file-name-directory load-file-name)))
 

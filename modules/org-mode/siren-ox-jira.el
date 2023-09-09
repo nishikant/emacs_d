@@ -2,7 +2,7 @@
 
 ;;; Commentary:
 
-;; Basic configuration for ox-jira.
+;; Basic configuration for ox-jira. ox-jira helps exporting text in jira format.
 
 ;;; Code:
 

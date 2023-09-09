@@ -8,11 +8,11 @@
 
 (use-package helpful
   :general
-  ("C-h k" 'helpful-key)
-  ("C-h f" 'helpful-callable)
-  ("C-h v" 'helpful-variable)
-  ("C-h C" 'helpful-command)
-  ("C-h F" 'helpful-function)
+  ("H-h k" 'helpful-key)
+  ("H-h f" 'helpful-callable)
+  ("H-h v" 'helpful-variable)
+  ("H-h C" 'helpful-command)
+  ("H-h F" 'helpful-function)
   (:keymaps 'emacs-lisp-mode-map
             "C-c C-d" 'helpful-at-point)
 
