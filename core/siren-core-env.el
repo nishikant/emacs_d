@@ -33,5 +33,6 @@
 ;; Add bin directory within emacs configuration dir to `exec-path'.
 (add-to-list 'exec-path (expand-file-name "bin" siren-dir))
 
+(add-to-list 'exec-path (expand-file-name "~/go/bin/"))
 (provide 'siren-core-env)
 ;;; siren-core-env.el ends here

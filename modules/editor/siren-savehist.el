@@ -10,12 +10,12 @@
   :ensure nil
 
   :custom
-  (savehist-additional-variables '(search-ring regexp-search-ring))
+  (savehist-additional-variables '(kill-ring search-ring regexp-search-ring))
   (savehist-autosave-interval 60)
   (savehist-file (siren-cache-dir "savehist"))
 
   :init
-  (savehist-mode +1))
+  (savehist-mode))
 
 (provide 'siren-savehist)
 ;;; siren-savehist.el ends here

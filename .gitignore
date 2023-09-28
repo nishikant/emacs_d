@@ -47,6 +47,10 @@ transient/*
 tree-sitter/*
 url/*
 var/*
+org-roam.db
+org-persist
+image-dired
+.dap-breakpoints
 
 # Bittorrent Sync related
 .AppleDouble
