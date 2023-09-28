@@ -31,7 +31,8 @@
             "C-c n g" 'org-roam-graph
             "C-c n i" 'org-roam-node-insert
             "C-c n c" 'org-roam-capture
-            "C-c n j" 'org-roam-dailies-capture-today)
+            "C-c n j" 'org-roam-dailies-capture-today
+            "C-c c" 'org-capture)
   (:keymaps 'org-src-mode-map
             "C-c C-c" 'org-edit-src-exit)
 
@@ -102,7 +103,22 @@
   (require 'org-mouse)
   (setq org-id-locations-file
         (expand-file-name ".org-id-locations" org-directory))
-  (setq org-log-done 'time))
+  (setq org-log-done 'time)
+  (setq org-startup-indented t)
+
+  (setq org-capture-templates
+        '(("t" "todo" plain (file buffer-name)
+           "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+
+          ("j" "Journal entry" plain
+           (file+olp+datetree "~/Documents/org-roam/journal.org")
+           "%K - %a\n%i\n%?\n"
+           :unnarrowed t)
+
+          ("o" "o3" entry
+           (file+olp+datetree buffer-name)
+           (file "~/project/emacs/org/capture_templates/o3.org"))))
+  )
 
 ;; Better Looking Bullets
 (use-package org-modern
@@ -114,6 +130,8 @@
            (org-modern-block-fringe nil))
   :commands (org-modern-mode org-modern-agenda)
   :init (global-org-modern-mode))
+(setq org-agenda-files (list "~/Documents/"))
+(define-key global-map "\C-cc" 'org-capture)
 
 ;; Org Presentations using org-tree-slide
 
