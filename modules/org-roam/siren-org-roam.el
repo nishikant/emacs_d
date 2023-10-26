@@ -20,6 +20,7 @@
            :target (file+head "%<%Y-%m-%d>.org"
                               "#+title: %<%Y-%m-%d>\n"))
           )))
+(global-set-key (kbd "C-c n f") 'org-roam-node-find)
 
 (provide 'siren-org-roam)
 ;;; siren-org-roam.el ends here

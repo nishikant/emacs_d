@@ -35,6 +35,7 @@
 (setq scroll-conservatively 10000)
 
 ;; mode line settings
+(global-display-line-numbers-mode)
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
