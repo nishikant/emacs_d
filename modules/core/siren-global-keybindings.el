@@ -45,6 +45,9 @@
  ;; iBuffer
  "C-x C-b" 'ibuffer
 
+ ;;Xref go back
+ "C-," 'xref-go-back
+
  ;; Rename current file and buffer
  "C-c r"  'siren-rename-file-and-buffer)
 
