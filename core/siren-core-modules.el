@@ -221,6 +221,7 @@
 (require 'siren-php)
 (require 'siren-plantuml)
 (require 'siren-protobuf)
+(require 'siren-python)
 (require 'siren-ruby)
 (require 'siren-rust)
 (require 'siren-sass)
