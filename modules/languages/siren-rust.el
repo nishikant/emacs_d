@@ -118,6 +118,6 @@
             "C-<return>" 'rust-playground-exec)
   :custom
   (rust-playground-basedir (expand-file-name "~/.rust/playground")))
-
+(add-to-list 'lsp-enabled-clients 'rust-analyzer)
 (provide 'siren-rust)
 ;;; siren-rust.el ends here
