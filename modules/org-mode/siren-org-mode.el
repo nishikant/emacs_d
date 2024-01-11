@@ -86,7 +86,8 @@
   :preface
   (defun siren-org-mode-setup ()
     (setq fill-column 80
-          whitespace-action '(auto-cleanup))
+          whitespace-action '(auto-cleanup)
+          tab-width 8)
 
     (setcar (nthcdr 4 org-emphasis-regexp-components) 20)
     (org-set-emph-re 'org-emphasis-regexp-components
