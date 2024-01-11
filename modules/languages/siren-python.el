@@ -41,7 +41,7 @@
   :hook (python-mode . (lambda () (require 'lsp-pyright)))
   :custom
   (lsp-pyright-multi-root nil))
-(add-to-list 'lsp-enabled-clients 'pylsp)
+(add-to-list 'lsp-enabled-clients 'pyright)
 
 (use-package py-autopep8)
 (require 'py-autopep8)
