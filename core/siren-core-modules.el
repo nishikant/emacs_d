@@ -207,6 +207,7 @@
 (require 'siren-flutter)
 (require 'siren-git-modes)
 (require 'siren-golang)
+(require 'siren-java)
 (require 'siren-groovy)
 (require 'siren-haml)
 (require 'siren-haskell)
