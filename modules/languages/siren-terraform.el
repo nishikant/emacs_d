@@ -45,9 +45,10 @@
     ;; out grey color for the first 1-2 seconds as you type.
     ;; (setq-local lsp-semantic-tokens-enable nil)
 
-    ;; (lsp-format-buffer-on-save-mode t)
-    ;; (lsp-deferred)
-    ))
+    (lsp-format-buffer-on-save-mode t)
+    (lsp-deferred)))
+(setq lsp-disabled-clients '(tfls))
+
 
 (use-package terraform-doc
   :defer t)
