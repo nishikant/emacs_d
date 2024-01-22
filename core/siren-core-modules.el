@@ -245,6 +245,7 @@
 (require 'siren-xml)
 (require 'siren-yaml)
 (require 'siren-pdf)
+(require 'siren-nov)
 
 (provide 'siren-core-modules)
 ;;; siren-core-modules.el ends here
