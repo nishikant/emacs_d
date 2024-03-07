@@ -13,6 +13,7 @@
 (require 'siren-projectile)
 (require 'siren-reformatter)
 
+(add-to-list 'lsp-enabled-clients 'gopls)
 (use-package go-mode
   :mode "\\.go\\'"
   :interpreter "go"
