@@ -13,6 +13,7 @@
 (require 'siren-projectile)
 (require 'siren-reformatter)
 
+
 (defgroup siren-go nil
   "Siren: go-mode configuration."
   :group 'go)
@@ -37,6 +38,8 @@
     :program "golines"
     :args '("-t" "4" "-m" "80" "--no-reformat-tags")
     :lighter " GOLINES"))
+
+(add-to-list 'lsp-enabled-clients 'gopls)
 
 (use-package go-mode
   :mode "\\.go\\'"
