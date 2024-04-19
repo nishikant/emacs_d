@@ -246,6 +246,8 @@
 (require 'siren-yaml)
 (require 'siren-pdf)
 (require 'siren-nov)
+(require 'siren-jira)
+(require 'siren-commify)
 
 (provide 'siren-core-modules)
 ;;; siren-core-modules.el ends here
