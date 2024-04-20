@@ -33,8 +33,8 @@
   :mode "\\.py\\'"
   :custom
   (python-indent-offset 4)
-  (flycheck-python-pycompile-executable "python3.11")
-  (python-shell-interpreter "python3.11"))
+  (flycheck-python-pycompile-executable "python3.12")
+  (python-shell-interpreter "python3.12"))
 
 
 (use-package lsp-pyright
