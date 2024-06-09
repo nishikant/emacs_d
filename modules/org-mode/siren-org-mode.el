@@ -140,5 +140,13 @@
   :custom
   (org-image-actual-width nil))
 
+
+(straight-use-package '(orgtbl-aggregate :host github
+                                         :repo "tbanel/orgaggregate"
+                                         :branch "master"))
+(straight-use-package '(orgtbl-aggregate :host github
+                                         :repo "tbanel/orgtbljoin"
+                                         :branch "master"))
+
 (provide 'siren-org-mode)
 ;;; siren-org-mode.el ends here
