@@ -30,5 +30,10 @@
   ;; Manual preview key for `affe-grep'
   (consult-customize affe-grep :preview-key "M-."))
 
+(defun affe-orderless-regexp-compiler (input _type _ignorecase)
+  (setq input (cdr (orderless-compile input)))
+  (cons input (apply-partially #'orderless--highlight input t)))
+(setq affe-regexp-compiler #'affe-orderless-regexp-compiler)
+
 (provide 'siren-fzf)
 ;;; siren-fzf.el ends here
