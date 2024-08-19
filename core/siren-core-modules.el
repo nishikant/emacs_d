@@ -248,6 +248,7 @@
 (require 'siren-nov)
 (require 'siren-jira)
 (require 'siren-commify)
+(require 'siren-orderless)
 (require 'siren-fzf)
 
 (provide 'siren-core-modules)

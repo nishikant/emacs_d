@@ -121,6 +121,8 @@ or *.yaml file in a .github/workflows/ directory."
       (flycheck-select-checker 'yaml-actionlint)
       (flycheck-add-next-checker 'yaml-actionlint 'lsp))))
 
+(add-to-list 'lsp-enabled-clients 'yamlls)
+
 (use-package yaml-imenu
   :after yaml-mode
   :config
