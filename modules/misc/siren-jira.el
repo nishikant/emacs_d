@@ -39,7 +39,7 @@
   (setq jiralib2-url              "https://monsterconfluence.atlassian.net"
         jiralib2-auth             'basic
         jiralib2-user-login-name  "nishikant.sevalkar@foundit.ai"
-        jiralib2-token            "ATATT3xFfGF0h6ndyratQ-QNDL2tWi4Z_qVNGnXr8aYpuWb5R981QKU1FIjygLg7f-JlBJfFRsONxL13jhnfDOld0Rgunt-ADoEm0d6zKLSGwxVV3tlgwVw3ONc5ly4lkhdJnd5kJ22Z-agz-6iIjun9HjEBYj3bVM_v9S2fECPU9wTf9YDJpFQ=3634030C"
+        jiralib2-token            ""
 
         ;; NOTE, this directory needs to be in `org-agenda-files'`
         ejira-org-directory       "~/Documents/jira/"
