@@ -144,7 +144,7 @@
 (straight-use-package '(orgtbl-aggregate :host github
                                          :repo "tbanel/orgaggregate"
                                          :branch "master"))
-(straight-use-package '(orgtbl-aggregate :host github
+(straight-use-package '(orgtbl-join :host github
                                          :repo "tbanel/orgtbljoin"
                                          :branch "master"))
 
