@@ -12,13 +12,13 @@
                 ;; features.
                 (all-the-icons-completion :type git :flavor melpa :host github :repo "iyefrat/all-the-icons-completion"
                                           :fork (:host github :repo "MintSoup/all-the-icons-completion"))
-                ;; Use fork with a fix for latest Emacs 30.x builds.
+                ;; Use fork from doom-emacs author with various fixes.
                 (dirvish :type git :flavor melpa :host github :repo "alexluigit/dirvish"
-                         :fork (:host github :repo "jimeh/dirvish" :branch "emacs-30-fix")
+                         :fork (:host github :repo "hlissner/dirvish" :branch "main")
                          :files (:defaults "extensions/*.el" "dirvish-pkg.el"))
-                ;; Override vertico recipe to fix issues with extensions.
-                (vertico :type git :host github :repo "minad/vertico"
-                         :files (:defaults "extensions/*" (:exclude ".git")))))))
+                ;; Use fork with for assert -> cl-assert
+                (refine :type git :flavor melpa :host github :repo "Wilfred/refine"
+                        :fork (:host github :repo "jimeh/refine" :branch "use-cl-assert"))))))
 
 (provide 'siren-core-package-overrides)
 ;;; siren-core-packages.el ends here
