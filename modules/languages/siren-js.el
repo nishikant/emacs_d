@@ -67,7 +67,8 @@
     (setq-local lsp-semantic-tokens-enable nil)
 
     (lsp-deferred)
-    (lsp-format-buffer-on-save-mode)))
+    (lsp-format-buffer-on-save-mode)
+    (add-to-list 'lsp-enabled-clients 'ts-ls)))
 
 (provide 'siren-js)
 ;;; siren-js.el ends here
