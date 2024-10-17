@@ -16,20 +16,22 @@
 
   :preface
   (defun siren-cape-capf-lsp-mode-setup ()
+    ;; Add capf hooks only for lsp-completion-mode
     (siren-cape-capf-add-hooks t))
 
   (defun siren-cape-capf-add-hooks (&optional local)
     (if local (make-local-variable 'completion-at-point-functions))
-    ;; Use `siren-prepend' function instead of `add-hook' to ensure our custom
-    ;; completion functions are listed before `lsp-completion-at-point'.
+    ;; Prepend the custom completion functions in capf contexts
     (siren-prepend completion-at-point-functions 'cape-file)
-    (siren-prepend completion-at-point-functions 'yasnippet-capf))
-    ;; (siren-prepend completion-at-point-functions
-    ;;                (cape-capf-super #'lsp-completion-at-point #'yasnippet-capf))
+
+    ;; Only add yasnippet to capf when company-mode is not active
+    (unless (bound-and-true-p company-mode)
+      (siren-prepend completion-at-point-functions 'siren-yasnippet-capf)))
 
   (defun siren-cape-capf-remove-hooks (&optional local)
-    (remove-hook 'completion-at-point-functions 'cape-file local)
-    (remove-hook 'completion-at-point-functions 'yasnippet-capf local))
+    ;; Remove capf hooks
+    (remove-hook 'completion-at-point-functions 'siren-yasnippet-capf local)
+    (remove-hook 'completion-at-point-functions 'cape-file local))
 
   :init
   (siren-cape-capf-add-hooks))
