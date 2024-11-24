@@ -51,6 +51,8 @@
 (require 'siren-core-packages)
 (require 'siren-core-package-overrides)
 (require 'siren-core-performance)
+(require 'siren-core-compile)
+(require 'siren-core-keybinds)
 (require 'siren-core-env)
 (require 'siren-core-ui)
 (require 'siren-core-editor)

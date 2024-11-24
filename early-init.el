@@ -16,9 +16,13 @@
 
 ;; Prevent native-compiling .dir-locals.el files.
 (let ((deny-list '("\\(?:[/\\\\]\\.dir-locals\\.el$\\)")))
-  (if (boundp 'native-comp-deferred-compilation-deny-list)
-      (setq native-comp-deferred-compilation-deny-list deny-list)
-    (setq comp-deferred-compilation-deny-list deny-list)))
+  (cond
+   ((boundp 'native-comp-jit-compilation-deny-list)
+    (setq native-comp-jit-compilation-deny-list deny-list))
+   ((boundp 'native-comp-deferred-compilation-deny-list)
+    (setq native-comp-deferred-compilation-deny-list deny-list))
+   ((boundp 'comp-deferred-compilation-deny-list)
+    (setq comp-deferred-compilation-deny-list deny-list))))
 
 (when (or (boundp 'comp-eln-load-path) (boundp 'native-comp-eln-load-path))
   (let ((eln-cache-dir (expand-file-name "cache/eln-cache/"
@@ -52,5 +56,8 @@
 ;; font. By inhibiting this, we easily halve startup times with fonts that are
 ;; larger than the system default.
 (setq frame-inhibit-implied-resize t)
+
+;; Set lsp-mode to use plists for performance improvements.
+(setenv "LSP_USE_PLISTS" "true")
 
 ;;; early-init.el ends here
