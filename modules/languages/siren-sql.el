@@ -36,6 +36,6 @@
   (sqlformat-args '("-g"))
   (sqlformat-command 'pgformatter))
 
-(add-to-list 'lsp-enabled-clients 'sqls)
+(add-to-list 'lsp-enabled-clients 'sql-ls)
 (provide 'siren-sql)
 ;;; siren-sql.el ends here
