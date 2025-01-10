@@ -75,7 +75,6 @@
      (org . t)
      (perl . t)
      (plantuml . t)
-     (python . t)
      (ruby . t)
      (sass . t)
      (scheme . t)

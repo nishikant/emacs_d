@@ -33,8 +33,8 @@
   :mode "\\.py\\'"
   :custom
   (python-indent-offset 4)
-  (flycheck-python-pycompile-executable "python3.12")
-  (python-shell-interpreter "python3.12"))
+  (flycheck-python-pycompile-executable "python3.13")
+  (python-shell-interpreter "python3.13"))
 
 
 (use-package lsp-pyright
@@ -80,7 +80,7 @@
   (use-package pyvenv
     :ensure t)
   :config
-  (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+  ;; (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
   (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv)  ;; If using projectile
   )
 (provide 'siren-python)
