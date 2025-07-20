@@ -17,5 +17,23 @@
                 groovy-indent-offset 4
                 tab-width 4)))
 
+;; Jenkins
+(use-package jenkins)
+;; groovy-mode
+
+(setq-default groovy-mode 1)
+;; enable when working on jenkins shared lib
+;;  (add-hook 'groovy-mode-hook 'git-auto-commit-mode)
+(add-to-list 'lsp-enabled-clients 'groovy-ls)
+(setq lsp-groovy-server-file "~/projects/groovy-language-server/build/libs/groovy-language-server-all.jar")
+(add-hook 'groovy-mode-hook #'lsp-deferred)
+;; (add-hook 'groovy-mode-hook #'lsp-groovy-enable)
+
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; Git autocommit used for groovy
+(use-package git-auto-commit-mode)
+
 (provide 'siren-groovy)
 ;;; siren-groovy.el ends here

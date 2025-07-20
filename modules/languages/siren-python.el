@@ -73,15 +73,5 @@
 ;;      python-shell-prompt-detect-failure-warning nil)
 
 
-
-(use-package auto-virtualenv
-  :ensure t
-  :init
-  (use-package pyvenv
-    :ensure t)
-  :config
-  ;; (add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
-  (add-hook 'projectile-after-switch-project-hook 'auto-virtualenv-set-virtualenv)  ;; If using projectile
-  )
 (provide 'siren-python)
 ;;; siren-python.el ends here
