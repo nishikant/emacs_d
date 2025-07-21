@@ -147,5 +147,8 @@
                                          :repo "tbanel/orgtbljoin"
                                          :branch "master"))
 
+(use-package org-table-highlight :ensure t
+  :hook (org-mode . org-table-highlight-mode))
+
 (provide 'siren-org-mode)
 ;;; siren-org-mode.el ends here
