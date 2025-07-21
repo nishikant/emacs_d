@@ -35,7 +35,7 @@
                    (dolist (f families)
                      (if (member f available)
                          (throw 'found f))))))
-    (set-face-attribute 'default nil :family family :height 140))
+    (set-face-attribute 'default nil :family family :height 160))
 
   ;; Fix the default default-directory value.
   (if (string= default-directory "/")
