@@ -1,4 +1,4 @@
-;;; siren-gptel.el --- jimeh's Emacs Siren: gptel configuration.
+;;; siren-gptel.el --- jimeh's Emacs Siren: gptel configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 
@@ -16,6 +16,9 @@
   ("C-c C-q" 'siren-gptel)
   (:keymaps 'gptel-mode-map
             "C-c C-<return>" 'gptel-send)
+
+  :custom
+  (gptel-default-mode 'org-mode)
 
   :preface
   (defgroup siren-gptel nil

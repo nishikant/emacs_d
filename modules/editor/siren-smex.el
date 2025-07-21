@@ -1,4 +1,4 @@
-;;; siren-smex.el --- jimeh's Emacs Siren: smex configuration.
+;;; siren-smex.el --- jimeh's Emacs Siren: smex configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 
@@ -9,7 +9,7 @@
 (use-package smex
   :general
   ("C-x C-m" 'smex)
-  ("C-c C-m" 'smex)
+  ("s-P" 'smex)
   ("M-X" 'smex-major-mode-commands)
   ("C-c C-c M-x" 'execute-extended-command)
 

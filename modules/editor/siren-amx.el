@@ -1,4 +1,4 @@
-;;; siren-amx.el --- jimeh's Emacs Siren: amx configuration.
+;;; siren-amx.el --- jimeh's Emacs Siren: amx configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 
@@ -12,6 +12,7 @@
   :general
   ("M-x" 'amx)
   ("C-x C-m" 'amx)
+  ("s-P" 'amx)
 
   :custom
   (amx-backend 'ido)

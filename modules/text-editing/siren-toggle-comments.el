@@ -1,4 +1,4 @@
-;;; siren-toggle-comments.el --- jimeh's Emacs Siren: toggle-comments
+;;; siren-toggle-comments.el --- jimeh's Emacs Siren: toggle-comments  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 
@@ -10,6 +10,7 @@
   :straight (:type built-in)
 
   :general
+  ("s-/" 'comment-or-uncomment-region-or-line)
   ("C-c /" 'comment-or-uncomment-region-or-line)
   ("C-c C-/" 'comment-or-uncomment-region-or-line)
   ("C-c C-_" 'comment-or-uncomment-region-or-line)
