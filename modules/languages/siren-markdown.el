@@ -10,6 +10,9 @@
 (require 'siren-display-line-numbers)
 (require 'siren-move-dup)
 
+(add-to-list 'lsp-enabled-clients 'marksman)  ;; Only use the one you installed
+(setq lsp-disabled-clients '(remark unified vale-ls))
+
 (use-package markdown-mode
   :mode
   "\\.md"
@@ -18,6 +21,8 @@
   "\\.mdown"
   "\\.markdown"
 
+  :hook (markdown-mode . lsp)
+
   :general
   (:keymaps 'markdown-mode-map
             "C-c p" 'markdown-preview
@@ -25,6 +30,7 @@
             "M-n" 'md-move-lines-down
             "M-P" 'markdown-previous-link
             "M-N" 'markdown-next-link)
+
 
   :hook
   (markdown-mode . siren-markdown-mode-setup)
@@ -60,6 +66,7 @@
                                       "--prose-wrap" "always"))))
 
       (setq-local prettier-js-args args))))
+
 
 ;; Required by markdown-edit-code-block.
 (use-package edit-indirect
