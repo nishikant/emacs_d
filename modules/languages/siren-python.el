@@ -26,6 +26,8 @@
 (setq python-indent-guess-indent-offset t)
 (setq python-indent-guess-indent-offset-verbose nil)
 ;; python
+(add-to-list 'lsp-enabled-clients 'pyright)
+(add-to-list 'lsp-enabled-clients 'ruff-lsp)
 
 (use-package python-mode
   :ensure nil
@@ -34,14 +36,16 @@
   :custom
   (python-indent-offset 4)
   (flycheck-python-pycompile-executable "python3.13")
-  (python-shell-interpreter "python3.13"))
-
+  (python-shell-interpreter "python3.13")
+  :hook
+  (python-mode . lsp)
+  )
 
 (use-package lsp-pyright
   :hook (python-mode . (lambda () (require 'lsp-pyright)))
   :custom
   (lsp-pyright-multi-root nil))
-(add-to-list 'lsp-enabled-clients 'pyright)
+
 
 (use-package py-autopep8)
 (require 'py-autopep8)

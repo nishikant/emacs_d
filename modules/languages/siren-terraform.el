@@ -9,13 +9,13 @@
 (require 'siren-lsp)
 (require 'siren-reformatter)
 
+(add-to-list 'lsp-enabled-clients 'terraform-ls)
 (use-package terraform-mode
   :hook
   (terraform-mode . siren-terraform-mode-setup)
 
   :custom
   (terraform-indent-level 2)
-
   :preface
   (defun siren-terraform-mode-setup ()
     (setq-local tab-width 2))
@@ -27,6 +27,22 @@
     :program "terraform"
     :args '("fmt" "-no-color" "-")
     :lighter " fmt"))
+
+(setq lsp-disabled-clients '(tfls))
+(setq lsp-terraform-ls-enable-show-reference t)
+
+(lsp-register-client
+ (make-lsp-client
+  :new-connection (lsp-stdio-connection `("/opt/homebrew/bin/terraform-ls" "serve"))
+  :major-modes '(terraform-mode)
+  :server-id 'terraform-ls))
+
+
+(use-package lsp-mode
+  :ensure t
+  :hook ((terraform-mode . lsp-deferred)))
+
+(add-hook 'terraform-mode-hook #'lsp)
 
 (use-package lsp-terraform
   :ensure nil

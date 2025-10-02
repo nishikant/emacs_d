@@ -72,6 +72,7 @@
      (js . t)
      (lisp . t)
      (makefile . t)
+     (mermaid . t)
      (org . t)
      (perl . t)
      (plantuml . t)
@@ -149,6 +150,7 @@
 
 (use-package org-table-highlight :ensure t
   :hook (org-mode . org-table-highlight-mode))
-
+(setq org-display-remote-inline-images 'download)
+(setq org-startup-with-inline-images t)
 (provide 'siren-org-mode)
 ;;; siren-org-mode.el ends here
