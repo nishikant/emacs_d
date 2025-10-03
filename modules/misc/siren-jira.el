@@ -1,4 +1,4 @@
-;;; siren-jira.el --- jimeh's Emacs Siren: jira configuration.
+;;; siren-jira.el --- jimeh's Emacs Siren: jira configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 

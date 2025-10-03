@@ -1,4 +1,4 @@
-;;; siren-org-roam.el --- gattus Emacs Siren: org-mode configuration.
+;;; siren-org-roam.el --- gattus Emacs Siren: org-mode configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 
