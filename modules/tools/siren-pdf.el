@@ -1,4 +1,4 @@
-;;; siren-pdf.el --- jimeh's Emacs Siren: pdf-mode configuration.
+;;; siren-pdf.el --- jimeh's Emacs Siren: pdf-mode configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 

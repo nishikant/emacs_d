@@ -20,7 +20,12 @@
         git clone git://github.com/jimeh/.emacs.d.git ~/.emacs.d
       #+END_SRC
    2. Launch Emacs and wait a few minutes while it installs all packages.
-   3. Enjoy ^_^
+   3. For a fresh Mac:
+      #+begin_src
+      brew install pandoc node sql-language-server
+      #+end_src
+
+   4. Enjoy ^_^
 
 ** Why not use Emacs Prelude?
 

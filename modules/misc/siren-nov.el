@@ -1,4 +1,4 @@
-;;; siren-nov.el --- jimeh's Emacs Siren: nov-xwidget configuration.
+;;; siren-nov.el --- jimeh's Emacs Siren: nov-xwidget configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 

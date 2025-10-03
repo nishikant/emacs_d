@@ -1,4 +1,4 @@
-;;; siren-fzf.el --- jimeh's Emacs Siren: fzf configuration.
+;;; siren-fzf.el --- jimeh's Emacs Siren: fzf configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 

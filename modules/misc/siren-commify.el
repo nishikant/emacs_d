@@ -1,4 +1,4 @@
-;;; siren-commify.el --- jimeh's Emacs Siren: commify configuration.
+;;; siren-commify.el --- jimeh's Emacs Siren: commify configuration.  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
 
