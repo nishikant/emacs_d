@@ -22,7 +22,8 @@
    2. Launch Emacs and wait a few minutes while it installs all packages.
    3. For a fresh Mac:
       #+begin_src
-      brew install pandoc node sql-language-server
+      brew install pandoc node sql-language-server cmake
+      ln -sf /opt/homebrew/bin/aclocal /opt/homebrew/opt/autoconf/bin/aclocal
       #+end_src
 
    4. Enjoy ^_^

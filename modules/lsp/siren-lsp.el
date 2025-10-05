@@ -118,7 +118,8 @@ steps not performed by default via the on-save hook."
   (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-show-code-actions t)
   (lsp-ui-sideline-show-diagnostics t)
-  (lsp-ui-sideline-show-hover nil))
+  (lsp-ui-sideline-show-hover t)
+  (lsp-enable-symbol-highlighting t))
 
 (use-package lsp-bridge
   :straight '(lsp-bridge :type git :host github :repo "manateelazycat/lsp-bridge"
