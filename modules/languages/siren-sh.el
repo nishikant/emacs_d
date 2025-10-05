@@ -6,26 +6,30 @@
 
 ;;; Code:
 
+
 (use-package sh-script
   :ensure nil
   :mode
-  ("/\\.env\\'" . sh-mode)
-  ("/\\.env\\." . sh-mode)
-  ("/\\.envrc\\'" . sh-mode)
-  ("/\\.envrc\\." . sh-mode)
-  ("\\.zsh\\'" . sh-mode)
-  ("/zshenv\\'" . sh-mode)
-  ("/zshrc\\'" . sh-mode)
-  ("\\.tmux\\'" . sh-mode)
-  ("\\.tmuxsh\\'" . sh-mode)
-  ("\\.tmuxtheme\\'" . sh-mode)
+  ("\\.env\\'" . sh-mode)              ; .env files
+  ("\\.env\\..*\\'" . sh-mode)         ; .env.* files
+  ("\\.envrc\\'" . sh-mode)            ; .envrc files
+  ("\\.zsh\\'" . sh-mode)              ; .zsh files
+  ("\\.zshrc\\'" . sh-mode)            ; .zshrc files
+  ("\\.zshenv\\'" . sh-mode)           ; .zshenv files
+  ("\\.zprofile\\'" . sh-mode)         ; .zprofile files
+  ("\\.zlogin\\'" . sh-mode)           ; .zlogin files
+  ("\\.zlogout\\'" . sh-mode)          ; .zlogout files
+  ("\\.tmux\\'" . sh-mode)             ; .tmux files
+  ("\\.tmuxsh\\'" . sh-mode)           ; .tmuxsh files
+  ("\\.tmuxtheme\\'" . sh-mode)        ; .tmuxtheme files
+  ("/etc/zsh/.*\\'" . sh-mode)         ; files in /etc/zsh/ directory
 
   :general
   (:keymaps 'sh-mode-map
             "RET" 'newline-and-indent)
 
   :hook
-  (sh-mode . siren-sh-mode-setup)
+  (sh-mode . lsp-deferred)
 
   :custom
   (sh-basic-offset 2)
@@ -34,7 +38,7 @@
 
   :preface
   (defun siren-sh-mode-setup ()
-    (setq-local tab-width 2)))
+    (setq-local tab-width 2))
 
 (use-package lsp-bash
   :ensure nil
@@ -81,7 +85,6 @@
 (use-package shfmt
   :hook
   (sh-mode . shfmt-on-save-mode)
-
   :custom
   (shfmt-arguments '("-i" "2" "-ci" "-sr")))
 
