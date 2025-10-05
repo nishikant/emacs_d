@@ -170,7 +170,6 @@
 (require 'siren-htmlize)
 (require 'siren-ob-go)
 (require 'siren-ob-http)
-(require 'siren-ob-mermaid)
 (require 'siren-org-mode)
 (require 'siren-org-roam)
 (require 'siren-ox-gfm)
