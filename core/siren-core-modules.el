@@ -72,6 +72,7 @@
 (require 'siren-gptel)
 
 ;; Misc.
+(require 'siren-copypath)
 (require 'siren-explain-pause)
 (require 'siren-list-available-fonts)
 (require 'siren-lorem-ipsum)
