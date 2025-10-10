@@ -16,8 +16,8 @@
   :ensure nil
   :general
   (:keymaps 'org-mode-map
-            "C-j" 'org-return-indent
-            "RET" 'org-return-indent
+            "C-j" 'org-return
+            "RET" 'org-return
             "M-{" 'org-promote-subtree
             "M-}" 'org-demote-subtree
             "M-P" 'org-metaup
@@ -72,7 +72,6 @@
      (js . t)
      (lisp . t)
      (makefile . t)
-     (mermaid . t)
      (org . t)
      (perl . t)
      (plantuml . t)
@@ -121,6 +120,10 @@
            (file "~/project/emacs/org/capture_templates/o3.org"))))
   )
 
+;; Add mermaid after ob-mermaid is loaded
+(with-eval-after-load 'ob-mermaid
+  (add-to-list 'org-babel-load-languages '(mermaid . t)))
+
 ;; Better Looking Bullets
 (use-package org-modern
   :hook ((org-mode                 . org-modern-mode)
@@ -152,5 +155,6 @@
   :hook (org-mode . org-table-highlight-mode))
 (setq org-display-remote-inline-images 'download)
 (setq org-startup-with-inline-images t)
+
 (provide 'siren-org-mode)
 ;;; siren-org-mode.el ends here
