@@ -13,7 +13,7 @@
 (require 'siren-projectile)
 (require 'siren-reformatter)
 
-(setq python-python-command "/opt/homebrew/bin/python3")
+(setq python-python-command "/opt/homebrew/bin/python3.14t")
 
 (use-package elpy
   :ensure t
@@ -35,8 +35,8 @@
   :mode "\\.py\\'"
   :custom
   (python-indent-offset 4)
-  (flycheck-python-pycompile-executable "python3.13")
-  (python-shell-interpreter "python3.13")
+  (flycheck-python-pycompile-executable "python3.14t")
+  (python-shell-interpreter "python3.14t")
   :hook
   (python-mode . lsp)
   )
