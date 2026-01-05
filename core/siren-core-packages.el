@@ -17,6 +17,7 @@
 ;; Basic Elpaca configuration.
 (setq use-package-always-ensure t)
 (setq elpaca-queue-limit 30)
+(setq elpaca-native-compile 'async)
 
 ;;
 ;; Install Elpaca package manager.
@@ -27,7 +28,7 @@
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
 (defvar elpaca-order '(elpaca :repo "https://github.com/jimeh/elpaca.git"
-                              :branch "lock-file-improvements"
+                              :branch "native-compilation"
                               :ref nil :depth 1 :inherit ignore
                               :files (:defaults "elpaca-test.el" (:exclude "extensions"))
                               :build (:not elpaca--activate-package)))
@@ -65,17 +66,6 @@
 ;; Enable Elpaca support for use-package's :ensure keyword.
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
-
-;; Ensure async native compilation is triggered when Elpaca builds a package.
-(defun siren-elpaca--async-native-compile (e)
-  "Trigger async native compilation for E's package."
-  (when (and (featurep 'native-compile)
-             (native-comp-available-p))
-    (native-compile-async (elpaca<-build-dir e) 'recursively))
-  (elpaca--continue-build e))
-
-(siren-add-after elpaca-build-steps
-                 'siren-elpaca--async-native-compile 'elpaca--byte-compile)
 
 (provide 'siren-core-packages)
 ;;; siren-core-packages.el ends here
