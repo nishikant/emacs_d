@@ -14,9 +14,9 @@
 (require 'jka-compr)
 (setq load-prefer-newer t)
 
-;; Always ensure packages are installed.
+;; Basic Elpaca configuration.
 (setq use-package-always-ensure t)
-(setq elpaca-lock-file (expand-file-name "elpaca/packages.lock.el" user-emacs-directory))
+(setq elpaca-queue-limit 30)
 
 ;;
 ;; Install Elpaca package manager.
@@ -26,7 +26,8 @@
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
-(defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
+(defvar elpaca-order '(elpaca :repo "https://github.com/jimeh/elpaca.git"
+                              :branch "lock-file-improvements"
                               :ref nil :depth 1 :inherit ignore
                               :files (:defaults "elpaca-test.el" (:exclude "extensions"))
                               :build (:not elpaca--activate-package)))
@@ -64,48 +65,6 @@
 ;; Enable Elpaca support for use-package's :ensure keyword.
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
-
-;;
-;; Lock file and force update helpers.
-;;
-
-;; Freeze package versions into the lock file.
-(defun elpaca-lock-versions ()
-  "Write current package versions to `elpaca-lock-file'."
-  (interactive)
-  (if (or (null elpaca-lock-file) (string-empty-p elpaca-lock-file))
-      (warn "elpaca-lock-file is not set")
-    (elpaca-write-lock-file elpaca-lock-file)))
-
-(defvar elpaca-force-update--packages nil
-  "List of package IDs to force update, bypassing pin checks.")
-
-(defun elpaca-force-update--pinned-p-advice (orig-fn e)
-  "Advice to bypass pin check for packages in `elpaca-force-update--packages'."
-  (if (and elpaca-force-update--packages
-           (memq (elpaca<-id e) elpaca-force-update--packages))
-      nil
-    (funcall orig-fn e)))
-
-(defun elpaca-force-update--clear-packages ()
-  "Clear the force update package list after queue processing."
-  (setq elpaca-force-update--packages nil))
-
-;; Install advice and hook once at load time
-(advice-add 'elpaca-pinned-p :around #'elpaca-force-update--pinned-p-advice)
-(add-hook 'elpaca-post-queue-hook #'elpaca-force-update--clear-packages)
-
-(defun elpaca-force-update (id)
-  "Force update package ID, bypassing lock file pin."
-  (interactive (list (elpaca--read-queued "Force update package: ")))
-  (setq elpaca-force-update--packages (list id))
-  (elpaca-update id t))
-
-(defun elpaca-force-update-all ()
-  "Force update all packages, bypassing lock file pins."
-  (interactive)
-  (setq elpaca-force-update--packages (mapcar #'car (elpaca--queued)))
-  (elpaca-update-all t))
 
 (provide 'siren-core-packages)
 ;;; siren-core-packages.el ends here

@@ -4,6 +4,7 @@ straight/*
 
 elpaca/*
 !elpaca/packages.lock.el
+!elpaca/versions.lock
 
 *.elc
 .DS_Store
