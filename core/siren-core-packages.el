@@ -66,5 +66,16 @@
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
 
+;; Ensure async native compilation is triggered when Elpaca builds a package.
+(defun siren-elpaca--async-native-compile (e)
+  "Trigger async native compilation for E's package."
+  (when (and (featurep 'native-compile)
+             (native-comp-available-p))
+    (native-compile-async (elpaca<-build-dir e) 'recursively))
+  (elpaca--continue-build e))
+
+(siren-add-after elpaca-build-steps
+                 'siren-elpaca--async-native-compile 'elpaca--byte-compile)
+
 (provide 'siren-core-packages)
 ;;; siren-core-packages.el ends here
