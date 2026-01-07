@@ -603,7 +603,7 @@
    (:source nil :protocol https :inherit ignore :depth 1 :repo
             "https://github.com/jimeh/elpaca.git" :branch
             "native-compilation" :ref
-            "4df547494a4be811a7e9550d5009509e06d77eca" :files
+            "c263e5c31f569ccbefe0d17643e80d162e2cfd4b" :files
             (:defaults "elpaca-test.el" (:exclude "extensions"))
             :build (:not elpaca--activate-package) :package "elpaca"))
  (elpaca-use-package :source "elpaca-menu-lock-file" :recipe
