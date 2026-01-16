@@ -13,8 +13,10 @@
    '(pdf-tools-handle-upgrades t)))
 (setq pdf-view-midnight-colors '("#f8f8f2" . "#282a36"))
 ;; (pdf-view-midnight-minor-mode)
-(pdf-tools-install)
-(pdf-loader-install)
+
+(with-eval-after-load 'pdf-tools
+  (pdf-tools-install)
+  (pdf-loader-install))
 
 (provide 'siren-pdf)
 ;;; siren-pdf.el ends here

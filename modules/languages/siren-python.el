@@ -26,8 +26,9 @@
 (setq python-indent-guess-indent-offset t)
 (setq python-indent-guess-indent-offset-verbose nil)
 ;; python
+(with-eval-after-load 'lsp-mode
 (add-to-list 'lsp-enabled-clients 'pyright)
-(add-to-list 'lsp-enabled-clients 'ruff-lsp)
+(add-to-list 'lsp-enabled-clients 'ruff-lsp))
 
 (use-package python-mode
   :ensure nil
@@ -47,10 +48,10 @@
   (lsp-pyright-multi-root nil))
 
 
-(use-package py-autopep8)
-(require 'py-autopep8)
-(py-autopep8-mode)
-(add-hook 'python-mode-hook 'py-autopep8-mode)
+(use-package py-autopep8
+  :hook (python-mode . py-autopep8-mode)
+  :custom
+  (py-autopep8-options '("--max-line-length=88")))
 
 ;; to reformat your python buffer enable blacken-mode in relevant python buffers
 (use-package blacken)

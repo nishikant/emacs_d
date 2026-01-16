@@ -30,10 +30,6 @@
   (add-hook 'dap-stopped-hook
             (lambda (arg) (call-interactively #'dap-hydra))))
 
-(straight-use-package '(lsp-java :host github
-                                 :repo "emacs-lsp/lsp-java"
-                                 :branch "master"))
-
 (add-hook 'java-mode-hook 'lsp)
 ;; (setq lsp-java-vmargs '("-cp" ".:/Users/gattu/project/java/algs4.jars:/Library/Java/Extensions"))
 
@@ -42,13 +38,14 @@
 ;; The modes above are optional
 
 ;; enables mouse hover support
-(dap-tooltip-mode 1)
+;; (dap-tooltip-mode 1)
 ;; use tooltips for mouse hover
 ;; if it is not enabled `dap-mode' will use the minibuffer.
 (tooltip-mode 1)
 ;; displays floating panel with debug buttons
 ;; requies emacs 26+
-(dap-ui-controls-mode 1)
+;; (dap-ui-controls-mode 1)
+(with-eval-after-load 'dap-mode
 (dap-register-debug-template "Rust::GDB Run Configuration"
                              (list :type "gdb"
                                    :request "launch"
@@ -76,7 +73,7 @@
                                    :env '(("DEBUG" . "1"))
                                    :target-module (expand-file-name "~/src/myapp/.env/bin/myapp")
                                    :request "launch"
-                                   :name "My App"))
+                                   :name "My App")))
 
 (provide 'siren-dap)
 ;;; siren-dap.el ends here

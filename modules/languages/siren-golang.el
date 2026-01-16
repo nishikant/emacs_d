@@ -32,7 +32,8 @@
       :args '("-t" "4" "-m" "80" "--no-reformat-tags")
       :lighter " GOLINES")))
 
-(add-to-list 'lsp-enabled-clients 'gopls)
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-enabled-clients 'gopls))
 
 (use-package go-mode
   :mode "\\.go\\'"

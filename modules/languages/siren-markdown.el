@@ -10,7 +10,10 @@
 (require 'siren-display-line-numbers)
 (require 'siren-move-dup)
 
-(add-to-list 'lsp-enabled-clients 'marksman)  ;; Only use the one you installed
+
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-enabled-clients 'marksman))
+
 (setq lsp-disabled-clients '(remark unified vale-ls))
 
 (use-package markdown-mode

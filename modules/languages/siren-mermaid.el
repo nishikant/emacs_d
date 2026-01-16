@@ -20,8 +20,9 @@
     (run-hooks 'prog-mode-hook)))
 
 (use-package ob-mermaid
-  :straight '(ob-mermaid :type git :host github :repo "arnm/ob-mermaid"
-                         :files (:defaults "*.el"))
+  :ensure (:host github
+                 :repo "arnm/ob-mermaid"
+                 :files (:defaults "*.el"))
 
   :after org
   :commands (org-babel-execute:mermaid)
@@ -37,12 +38,7 @@
   (add-to-list 'org-src-lang-modes '("mermaid" . mermaid))
 
   :config
-  (setq ob-mermaid-cli-path "mmdc")
-  ;; Uncomment the following line to use ob-mermaid without the need to
-  ;; install mermaid-cli globally (requires Node.js). This will install it
-  ;; locally in your `straight-base-dir`.
-  ;; (setq ob-mermaid-cli-path (expand-file-name "node_modules/.bin/mmdc" straight-base-dir))
-  )
+  (setq ob-mermaid-cli-path "mmdc"))
 
 (provide 'siren-mermaid)
 ;;; siren-mermaid.el ends here

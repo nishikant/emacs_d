@@ -6,8 +6,8 @@
 
 ;;; Code:
 
-
-(add-to-list 'lsp-enabled-clients 'jdtls)
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-enabled-clients 'jdtls))
 
 (use-package java-snippets)
 

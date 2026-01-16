@@ -9,7 +9,10 @@
 (require 'siren-lsp)
 (require 'siren-reformatter)
 
-(add-to-list 'lsp-enabled-clients 'terraform-ls)
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-enabled-clients 'terraform-ls)
+  (add-hook 'terraform-mode-hook #'lsp-deferred))
+
 (use-package terraform-mode
   :hook
   (terraform-mode . siren-terraform-mode-setup)
@@ -31,16 +34,14 @@
 (setq lsp-disabled-clients '(tfls))
 (setq lsp-terraform-ls-enable-show-reference t)
 
-(lsp-register-client
- (make-lsp-client
-  :new-connection (lsp-stdio-connection `("/opt/homebrew/bin/terraform-ls" "serve"))
-  :major-modes '(terraform-mode)
-  :server-id 'terraform-ls))
-
-
-(use-package lsp-mode
-  :ensure t
-  :hook ((terraform-mode . lsp-deferred)))
+(with-eval-after-load 'lsp-mode
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection
+    (lsp-stdio-connection
+     '("/opt/homebrew/bin/terraform-ls" "serve"))
+    :major-modes '(terraform-mode)
+    :server-id 'terraform-ls)))
 
 (add-hook 'terraform-mode-hook #'lsp)
 

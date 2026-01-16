@@ -164,7 +164,7 @@
       (delq 'company-preview-if-just-one-frontend company-frontends))))
 
 (use-package copilot-chat
-  :straight (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
+  :ensure (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
   :after (request org markdown-mode shell-maker))
 
 (provide 'siren-copilot)

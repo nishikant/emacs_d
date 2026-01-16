@@ -143,14 +143,6 @@
   :custom
   (org-image-actual-width nil))
 
-
-(straight-use-package '(orgtbl-aggregate :host github
-                                         :repo "tbanel/orgaggregate"
-                                         :branch "master"))
-(straight-use-package '(orgtbl-join :host github
-                                         :repo "tbanel/orgtbljoin"
-                                         :branch "master"))
-
 (use-package org-table-highlight :ensure t
   :hook (org-mode . org-table-highlight-mode))
 (setq org-display-remote-inline-images 'download)
