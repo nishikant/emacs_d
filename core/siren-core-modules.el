@@ -250,6 +250,7 @@
 (require 'siren-commify)
 (require 'siren-orderless)
 (require 'siren-fzf)
+(require 'siren-gnupg)
 
 (provide 'siren-core-modules)
 ;;; siren-core-modules.el ends here
