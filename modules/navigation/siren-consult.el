@@ -9,6 +9,9 @@
 (eval-when-compile
   (require 'cl-lib))
 
+(with-eval-after-load 'diff
+  (defvar coding-system--for-buffer-diff nil))
+
 (use-package consult
   :defer t
   :general
@@ -24,9 +27,26 @@
   (consult-buffer-show-hidden nil)
   (consult-buffer-filter
    '("\` "
-     "\\`\*tramp/"
-     "\`\\*Async-native-compile-log\\*"
-     "\`\\*elpaca\\*"))
+     "\`\*tramp/"
+     "\`\*Async-native-compile-log\*"
+     "\`\*elpaca\*"
+     "\`\*Messages\*"
+     "\`\*Compile-Log\*"
+     "\`\*Flymake log\*"
+     "\`\*Backtrace\*"
+     "\`\*code\*"
+     "\`\*copilot\*"
+     "\`\*diff\*"
+     "\`\*Echo\*"
+     "\`\*Warnings\*"
+     "\`\*lsp\*"
+     "\`\*pdf\*"
+     "\`\*eldoc\*"
+     "\`\*LSP\*"
+     "\`\*company\*"
+     "\`\*jka\*"
+     "\`\*Min\*"
+     "\`\*work\*"))
 
   :preface
   (defun siren-consult-imenu ()
