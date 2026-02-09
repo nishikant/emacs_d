@@ -1,92 +1,120 @@
-;;; siren-sh.el --- jimeh's Emacs Siren: sh-mode configuration.  -*- lexical-binding: nil; -*-
+;;; siren-sh.el --- Shell / Bash configuration  -*- lexical-binding: nil; -*-
 
 ;;; Commentary:
-
-;; Basic configuration for sh-mode.
+;; Bash & shell configuration with:
+;; - bash-ts-mode (Emacs 29+)
+;; - Proper indentation
+;; - LSP (bash-language-server)
+;; - ShellCheck via efm-langserver
+;; - shfmt on save
 
 ;;; Code:
 
+;; --------------------
+;; Mode selection
+;; --------------------
+
+;; Prefer bash-ts-mode when available
+(when (fboundp 'bash-ts-mode)
+  (add-to-list 'major-mode-remap-alist
+               '(sh-mode . bash-ts-mode)))
 
 (use-package sh-script
   :ensure nil
   :mode
-  ("\\.env\\'" . sh-mode)              ; .env files
-  ("\\.env\\..*\\'" . sh-mode)         ; .env.* files
-  ("\\.envrc\\'" . sh-mode)            ; .envrc files
-  ("\\.zsh\\'" . sh-mode)              ; .zsh files
-  ("\\.zshrc\\'" . sh-mode)            ; .zshrc files
-  ("\\.zshenv\\'" . sh-mode)           ; .zshenv files
-  ("\\.zprofile\\'" . sh-mode)         ; .zprofile files
-  ("\\.zlogin\\'" . sh-mode)           ; .zlogin files
-  ("\\.zlogout\\'" . sh-mode)          ; .zlogout files
-  ("\\.tmux\\'" . sh-mode)             ; .tmux files
-  ("\\.tmuxsh\\'" . sh-mode)           ; .tmuxsh files
-  ("\\.tmuxtheme\\'" . sh-mode)        ; .tmuxtheme files
-  ("/etc/zsh/.*\\'" . sh-mode)         ; files in /etc/zsh/ directory
+  ("\\.env\\'"        . sh-mode)
+  ("\\.env\\..*\\'"   . sh-mode)
+  ("\\.envrc\\'"      . sh-mode)
+  ("\\.zsh\\'"        . sh-mode)
+  ("\\.zshrc\\'"      . sh-mode)
+  ("\\.zshenv\\'"     . sh-mode)
+  ("\\.zprofile\\'"   . sh-mode)
+  ("\\.zlogin\\'"     . sh-mode)
+  ("\\.zlogout\\'"    . sh-mode)
+  ("\\.tmux\\'"       . sh-mode)
+  ("\\.tmuxsh\\'"     . sh-mode)
+  ("\\.tmuxtheme\\'"  . sh-mode)
+  ("/etc/zsh/.*\\'"   . sh-mode)
 
   :general
   (:keymaps 'sh-mode-map
-            "RET" 'newline-and-indent)
+            "RET" #'newline-and-indent)
 
   :hook
-  (sh-mode . lsp-deferred)
+  (sh-mode . siren-sh-common-setup)
 
   :custom
+  ;; Classic sh-mode indentation (used when ts-mode unavailable)
   (sh-basic-offset 2)
   (sh-indentation 2)
   (sh-indent-after-continuation 'always)
 
   :preface
-  (defun siren-sh-mode-setup ()
-    (setq-local tab-width 2)))
+  (defun siren-sh-common-setup ()
+    (setq-local tab-width 2
+                indent-tabs-mode nil)))
 
-  (use-package lsp-bash
-    :ensure nil
-    :defer t
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-enabled-clients 'bash-ls))
 
-    :hook
-    (sh-mode . siren-lsp-bash-mode-setup)
+;; --------------------
+;; Tree-sitter indentation (Emacs 29+)
+;; --------------------
 
-    :preface
-    (defun siren-lsp-bash-mode-setup ()
-      (when (member sh-shell '(bash sh))
-        (if (fboundp 'lsp-deferred)
-            (lsp-deferred))
-        (if (fboundp 'tree-sitter-mode)
-            (tree-sitter-mode t))))
+(with-eval-after-load 'bash-ts-mode
+  (setq bash-ts-mode-indent-offset 2))
 
-    :config
-    ;; Create custom lsp-client for shellcheck diagnostics via efm-langserver.
-    (when (and (executable-find "efm-langserver")
-               (executable-find "shellcheck"))
-      (lsp-register-custom-settings
-       '(("shellcheck.rootMarkers" [".git/"])
-         ("shellcheck.languages"
-          ((shellscript . [((lintCommand . "shellcheck -f gcc -x -")
-                            (lintStdin . t)
-                            (lintSource . "shellcheck")
-                            (lintFormats . ["%f:%l:%c: %trror: %m"
-                                            "%f:%l:%c: %tarning: %m"
-                                            "%f:%l:%c: %tote: %m"]))])))))
-      (lsp-register-client
-       (make-lsp-client :new-connection (lsp-stdio-connection
-                                         '("efm-langserver"))
-                        :priority 0
-                        :activation-fn #'lsp-bash-check-sh-shell
-                        :initialized-fn
-                        (lambda (workspace)
-                          (with-lsp-workspace workspace
-                                              (lsp--set-configuration
-                                               (gethash "shellcheck"
-                                                        (lsp-configuration-section "shellcheck")))))
-                        :server-id 'shellcheck
-                        :add-on? t))))
+;; --------------------
+;; LSP: Bash
+;; --------------------
 
-  (use-package shfmt
-    :hook
-    (sh-mode . shfmt-on-save-mode)
-    :custom
-    (shfmt-arguments '("-i" "2" "-ci" "-sr")))
+(use-package lsp-mode
+  :commands lsp lsp-deferred
+  :hook
+  ((sh-mode bash-ts-mode) . siren-sh-maybe-enable-lsp))
 
-  (provide 'siren-sh)
+(defun siren-sh-maybe-enable-lsp ()
+  (when (member sh-shell '(bash sh))
+    (lsp-deferred)))
+
+;; Silence noisy warning if a shell buffer does not use LSP
+(setq lsp-warn-no-matched-clients nil)
+
+;; --------------------
+;; ShellCheck via EFM (add-on diagnostics)
+;; --------------------
+
+(with-eval-after-load 'lsp-mode
+  (when (and (executable-find "efm-langserver")
+             (executable-find "shellcheck"))
+
+    (lsp-register-custom-settings
+     '(("shellcheck.rootMarkers" [".git/"])
+       ("shellcheck.languages"
+        ((shellscript . [((lintCommand . "shellcheck -f gcc -x -")
+                          (lintStdin . t)
+                          (lintSource . "shellcheck")
+                          (lintFormats . ["%f:%l:%c: %trror: %m"
+                                          "%f:%l:%c: %tarning: %m"
+                                          "%f:%l:%c: %tote: %m"]))])))))
+
+    (lsp-register-client
+     (make-lsp-client
+      :new-connection (lsp-stdio-connection '("efm-langserver"))
+      :priority 0
+      :activation-fn #'lsp-bash-check-sh-shell
+      :server-id 'shellcheck
+      :add-on? t))))
+
+;; --------------------
+;; Formatting: shfmt
+;; --------------------
+
+(use-package shfmt
+  :hook
+  ((sh-mode bash-ts-mode) . shfmt-on-save-mode)
+  :custom
+  (shfmt-arguments '("-i" "2" "-ci" "-sr")))
+
+(provide 'siren-sh)
 ;;; siren-sh.el ends here

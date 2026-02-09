@@ -251,6 +251,7 @@
 (require 'siren-orderless)
 (require 'siren-fzf)
 (require 'siren-gnupg)
+(require 'siren-ledger)
 
 (provide 'siren-core-modules)
 ;;; siren-core-modules.el ends here

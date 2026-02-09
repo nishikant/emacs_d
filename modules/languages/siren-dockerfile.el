@@ -39,6 +39,10 @@
           (delete '("\\(?:Dockerfile\\(?:\\..*\\)?\\|\\.[Dd]ockerfile\\)\\'"
                     . dockerfile-ts-mode)
                   auto-mode-alist))))
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-enabled-clients 'dockerfile-ls)
+  (add-to-list 'lsp-enabled-clients 'semgrep-ls))
+
 
 (use-package lsp-dockerfile
   :ensure nil

@@ -148,5 +148,10 @@
 (setq org-display-remote-inline-images 'download)
 (setq org-startup-with-inline-images t)
 
+
+(use-package ob-lc
+  :ensure (:host github :repo "jayrajput/ob-ledger-convert"))
+
+
 (provide 'siren-org-mode)
 ;;; siren-org-mode.el ends here
