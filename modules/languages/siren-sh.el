@@ -67,11 +67,9 @@
 ;; --------------------
 ;; LSP: Bash
 ;; --------------------
-
-(use-package lsp-mode
-  :commands lsp lsp-deferred
-  :hook
-  ((sh-mode bash-ts-mode) . siren-sh-maybe-enable-lsp))
+(with-eval-after-load 'lsp-mode
+  (add-hook 'sh-mode-hook #'siren-sh-maybe-enable-lsp)
+  (add-hook 'bash-ts-mode-hook #'siren-sh-maybe-enable-lsp))
 
 (defun siren-sh-maybe-enable-lsp ()
   (when (member sh-shell '(bash sh))
