@@ -27,7 +27,8 @@
             ;; "M-f" 'copilot-accept-completion-by-word
             "M-<right>" 'copilot-accept-completion-by-word
             ;; "C-e" 'copilot-accept-completion-by-line
-            "<end>" #'copilot-accept-completion-by-line)
+            "<end>" #'copilot-accept-completion-by-line
+            "<tab>" 'copilot-accept-completion-by-paragraph)
 
   :custom
   (copilot-disable-predicates '(siren-copilot-disable-predicate))

@@ -42,9 +42,6 @@
   ;; and accepting company-mode completions.
   (unbind-key "<backtab>" company-active-map))
 
-(use-package company-box
-  :if window-system
-  :hook (company-mode . company-box-mode))
 
 (provide 'siren-company)
 ;;; siren-company.el ends here

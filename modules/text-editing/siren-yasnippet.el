@@ -11,6 +11,8 @@
 (use-package yasnippet
   :diminish yas-minor-mode
   :hook (emacs-startup . yas-reload-all)
+  :bind (("C-c y i" . yas-insert-snippet)
+         ("C-c y e" . yas-expand))
 
   :config
   (yas-global-mode))
@@ -21,7 +23,8 @@
   :config
   (let ((skip-file (expand-file-name "prog-mode/.yas-skip"
                                      yasnippet-snippets-dir)))
-    (when (not (file-exists-p skip-file))
+
+    (unless (file-exists-p skip-file)
       (make-empty-file skip-file t))))
 
 (use-package yasnippet-capf
