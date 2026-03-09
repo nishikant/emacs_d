@@ -168,5 +168,12 @@
   :ensure (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
   :after (request org markdown-mode shell-maker))
 
+(use-package claude-code-ide
+  :ensure (:host github :repo "manzaltu/claude-code-ide.el" :files ("*.el"))
+  :bind ("C-c C-'" . claude-code-ide-menu) ; Set your favorite keybinding
+  :config
+  (setq claude-code-ide-cli-path "/Users/gattu/.local/bin/claude") ; Optionally enable Emacs MCP tools
+  (claude-code-ide-emacs-tools-setup))
+
 (provide 'siren-copilot)
 ;;; siren-copilot.el ends here

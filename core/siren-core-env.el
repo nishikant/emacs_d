@@ -34,5 +34,6 @@
 (add-to-list 'exec-path (expand-file-name "bin" siren-dir))
 
 (add-to-list 'exec-path (expand-file-name "~/go/bin/"))
+(add-to-list 'exec-path (expand-file-name "~/.local/bin"))
 (provide 'siren-core-env)
 ;;; siren-core-env.el ends here
