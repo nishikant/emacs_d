@@ -254,6 +254,7 @@
 (require 'siren-ledger)
 (require 'siren-revealjs)
 (require 'siren-latex)
+(require 'siren-email)
 
 (provide 'siren-core-modules)
 ;;; siren-core-modules.el ends here
