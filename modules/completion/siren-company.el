@@ -42,6 +42,5 @@
   ;; and accepting company-mode completions.
   (unbind-key "<backtab>" company-active-map))
 
-
 (provide 'siren-company)
 ;;; siren-company.el ends here

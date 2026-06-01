@@ -30,6 +30,11 @@
   (add-hook 'dap-stopped-hook
             (lambda (arg) (call-interactively #'dap-hydra))))
 
+;; (require 'dap-java)
+;; (require 'dap-python)
+;; (require 'dap-gdb-lldb)
+
+
 (add-hook 'java-mode-hook 'lsp)
 ;; (setq lsp-java-vmargs '("-cp" ".:/Users/gattu/project/java/algs4.jars:/Library/Java/Extensions"))
 

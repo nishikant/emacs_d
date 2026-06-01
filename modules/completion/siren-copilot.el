@@ -164,8 +164,8 @@
             'company-pseudo-tooltip-frontend)
       (delq 'company-preview-if-just-one-frontend company-frontends))))
 
-(use-package copilot-chat
-  :ensure (:host github :repo "chep/copilot-chat.el" :files ("*.el"))
+(use-package gh-copilot-chat
+  :ensure (:host github :repo "chep/gh-copilot-chat.el" :files ("*.el"))
   :after (request org markdown-mode shell-maker))
 
 (use-package claude-code-ide
