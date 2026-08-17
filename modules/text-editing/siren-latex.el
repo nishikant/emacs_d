@@ -8,12 +8,14 @@
 
 (setq org-latex-compiler "xelatex")
 
-(setq org-latex-classes
-      '(("resume"
-         "\\input{resume-template.tex}"
-         ("\\section{%s}" . "\\section*{%s}")
-         ("\\subsection{%s}" . "\\subsection*{%s}")
-         ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+(with-eval-after-load 'ox-latex
+  ;; keep defaults, just add resume
+  (add-to-list 'org-latex-classes
+               '("resume"
+                 "\\input{resume-template.tex}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
 
 (provide 'siren-latex)
 ;;; siren-latex.el ends here

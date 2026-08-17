@@ -58,6 +58,7 @@
 
 ;; Emacs Ipython Notebook
 (use-package ein
+  :ensure (ein :host github :repo "millejoh/emacs-ipython-notebook" :branch "master")
   :defer t
   :config
   (setq ein:use-auto-complete t)
@@ -70,6 +71,17 @@
 
 ;; Try ein and decide if this is needed
 ;; (use-package jupyter)
+(use-package jupyter
+  :ensure t
+  :defer t
+  :init
+  ;; Integrate with Org-Babel
+  (with-eval-after-load 'org
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((python . t)
+       (jupyter . t))))) ; Enables jupyter-python blocks
+
 
 ;; Use IPython for REPL
 (setq python-shell-completion-native-enable nil)

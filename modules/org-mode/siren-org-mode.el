@@ -133,7 +133,7 @@
            (org-modern-variable-pitch nil)
            (org-modern-block-fringe nil))
   :commands (org-modern-mode org-modern-agenda)
-  :init (global-org-modern-mode))
+  :config (global-org-modern-mode 1))
 (setq org-agenda-files (list "~/Documents/"))
 (define-key global-map "\C-cc" 'org-capture)
 
