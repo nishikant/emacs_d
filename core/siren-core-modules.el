@@ -255,6 +255,9 @@
 (require 'siren-revealjs)
 (require 'siren-latex)
 (require 'siren-email)
+(require 'siren-grid-table)
+(require 'siren-relysium)
+(require 'siren-cursor)
 
 (provide 'siren-core-modules)
 ;;; siren-core-modules.el ends here

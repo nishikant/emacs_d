@@ -23,7 +23,7 @@ auth-source. If LOGIN is non-nil, use that value to retrieve the"
   (let ((login (siren-chatgpt--login-user)))
     (or (and siren-chatgpt--api-key-login
              (string= siren-chatgpt--api-key-login login))
-        (let ((api-key (auth-source-pick-first-password :host "api.openai.com"
+        (let ((api-key (auth-source-pick-first-password :host "localhost:1234"
                                                         :user login)))
           (if api-key
               (progn

@@ -68,7 +68,7 @@
 
     (lsp-deferred)
     (lsp-format-buffer-on-save-mode)
-    (add-to-list 'lsp-enabled-clients 'ts-ls)))
+    (add-to-list 'lsp-enabled-clients 'typescript-language-server)))
 
 (provide 'siren-js)
 ;;; siren-js.el ends here
